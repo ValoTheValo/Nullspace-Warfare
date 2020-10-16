@@ -88,6 +88,8 @@
 	while (firing && target)
 		do_fire()
 		sleep(0.5) //Keep spamming events every frame as long as the button is held
+		if (world.tick_usage > 85)
+			sleep(world.tick_lag)
 	stop_firing()
 
 //Next loop will notice these vars and stop shooting
