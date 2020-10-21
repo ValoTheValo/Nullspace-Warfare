@@ -25,6 +25,7 @@
 	)
 	var/consume_cell = FALSE
 	price_tag = 2500
+	damage_multiplier = 1.15
 
 /obj/item/weapon/gun/energy/shrapnel/consume_next_projectile()
 	.=..()
