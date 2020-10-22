@@ -20,7 +20,7 @@
 
 	init_firemodes = list(
 		SEMI_AUTO_NODELAY,
-		BURST_3_ROUND
+		list(mode_name="3-round bursts", burst=3, fire_delay = 3, move_delay=4, icon="burst")
 		)
 
 /obj/item/weapon/gun/projectile/clarissa/update_icon()
@@ -48,7 +48,7 @@
 	desc = "Old-designed pistol of space communists. Small and easily concealable. Uses .35 Auto rounds."
 	icon = 'icons/obj/guns/projectile/makarov.dmi'
 	icon_state = "makarov"
-	damage_multiplier = 1.2
+	damage_multiplier = 1.8
 	recoil_buildup = 21
 	price_tag = 1400
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_COVERT = 3)
