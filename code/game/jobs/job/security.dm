@@ -1,5 +1,57 @@
+/datum/job/ihso
+	title = "Ironhammer Special Operative"
+	flag = IHSO
+	head_position = 1
+	department = DEPARTMENT_SECURITY
+	department_flag = IRONHAMMER
+	faction = "CEV Eris"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "the Captain"
+	selection_color = "#97b0be"
+	req_admin_notify = 0
+	wage = WAGE_COMMAND
+	also_known_languages = list(LANGUAGE_CYRILLIC = 90, LANGUAGE_SERBIAN = 90, LANGUAGE_NEOHONGO = 100)
+
+	outfit_type = /decl/hierarchy/outfit/job/security/ihc
+
+	access = list(
+		access_security, access_eva, access_sec_doors, access_brig, access_armory, access_medspec,
+		access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
+		access_moebius, access_engine, access_mining, access_construction, access_mailsorting,
+		access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway,
+		access_external_airlocks, access_change_sec
+	)
+
+	stat_modifiers = list(
+		STAT_ROB = 50,
+		STAT_TGH = 50,
+		STAT_VIG = 40,
+	)
+
+	perks = list(/datum/perk/survivor,
+				 /datum/perk/codespeak)
+
+	software_on_spawn = list(/datum/computer_file/program/comm,
+							 /datum/computer_file/program/digitalwarrant,
+							 /datum/computer_file/program/camera_monitor,
+							 /datum/computer_file/program/reports)
+
+	description = "placeholder"
+
+	duties = "placeholder"
+
+	loyalties = "placeholder"
+
+/obj/landmark/join/start/ihso
+	name = "Ironhammer Special Operative"
+	icon_state = "player-blue-officer"
+	join_tag = /datum/job/ihso
+
+
+
 /datum/job/ihc
-	title = "Ironhammer Commander"
+	title = "Ironhammer Field Commander"
 	flag = IHC
 	head_position = 1
 	department = DEPARTMENT_SECURITY
@@ -27,6 +79,8 @@
 		STAT_ROB = 40,
 		STAT_TGH = 30,
 		STAT_VIG = 40,
+		STAT_BIO = 10,
+		STAT_MEC = 10,
 	)
 
 	perks = list(/datum/perk/survivor,
