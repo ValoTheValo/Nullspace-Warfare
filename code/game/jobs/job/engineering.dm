@@ -5,8 +5,8 @@
 	department = DEPARTMENT_ENGINEERING
 	department_flag = ENGINEERING | COMMAND
 	faction = "CEV Eris"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the Captain"
 	selection_color = "#c7b97b"
 	req_admin_notify = 1
@@ -62,8 +62,8 @@ Your second loyalty is to your clan. Ensure they are paid, fed and safe. Don't r
 	department = DEPARTMENT_ENGINEERING
 	department_flag = ENGINEERING
 	faction = "CEV Eris"
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the Technomancer Exultant"
 	selection_color = "#d5c88f"
 	also_known_languages = list(LANGUAGE_CYRILLIC = 100, LANGUAGE_SERBIAN = 5)

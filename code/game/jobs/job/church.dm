@@ -69,13 +69,13 @@
 	join_tag = /datum/job/chaplain
 
 /datum/job/acolyte
-	title = "NeoTheology Acolyte"
+	title = "NeoTheology Crusader"
 	flag = ACOLYTE
 	department = DEPARTMENT_CHURCH
 	department_flag = CHURCH
 	faction = "CEV Eris"
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 10
+	spawn_positions = 10
 	supervisors = "the NeoTheology Preacher"
 	selection_color = "#ecd37d"
 	also_known_languages = list(LANGUAGE_CYRILLIC = 10, LANGUAGE_LATIN = 100)
@@ -112,7 +112,7 @@
 	join_tag = /datum/job/acolyte
 
 /datum/job/hydro
-	title = "NeoTheology Agrolyte"
+	title = "NeoTheology Medicus"
 	flag = BOTANIST
 	department = DEPARTMENT_CHURCH
 	department_flag = CHURCH

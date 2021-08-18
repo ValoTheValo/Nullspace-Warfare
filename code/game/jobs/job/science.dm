@@ -60,13 +60,13 @@ Your second loyalty is to moebius corp. In order to ensure it can continue its m
 
 
 /datum/job/scientist
-	title = "Moebius Scientist"
+	title = "Moebius Security Contractor"
 	flag = SCIENTIST
 	department = DEPARTMENT_SCIENCE
 	department_flag = SCIENCE
 	faction = "CEV Eris"
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 10
+	spawn_positions = 10
 	supervisors = "the Moebius Expedition Overseer"
 	selection_color = "#bdb1bb"
 	wage = WAGE_PROFESSIONAL
@@ -86,6 +86,7 @@ Your second loyalty is to moebius corp. In order to ensure it can continue its m
 		STAT_MEC = 20,
 		STAT_COG = 30,
 		STAT_BIO = 20,
+		STAT_ROB = 10,
 	)
 
 	perks = list(/datum/perk/selfmedicated)
@@ -120,7 +121,7 @@ Your second loyalty is to moebius corp. In order to ensure it can continue its m
 
 
 /datum/job/roboticist
-	title = "Moebius Roboticist"
+	title = "Moebius Combat Engineer"
 	flag = ROBOTICIST
 	department = DEPARTMENT_SCIENCE
 	department_flag = SCIENCE
