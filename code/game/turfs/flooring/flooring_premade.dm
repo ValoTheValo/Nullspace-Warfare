@@ -59,10 +59,6 @@
 	icon_state = "wood"
 	initial_flooring = /decl/flooring/wood
 
-
-
-
-
 /turf/simulated/floor/tiled
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
