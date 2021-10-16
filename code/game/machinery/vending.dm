@@ -444,6 +444,10 @@
 		SSnano.update_uis(src)
 		return
 
+	else if(istype(I, /obj/item/device/spy_bug))
+		user.drop_item()
+		I.loc = get_turf(src)
+
 	for(var/datum/data/vending_product/R in product_records)
 		if(I.type == R.product_path && I.name == R.product_name)
 			if(!locked || always_open || (panel_open && !custom_vendor))
@@ -996,6 +1000,7 @@
 					/obj/item/gun/projectile/olivaw = 5,
 					/obj/item/gun/projectile/giskard = 5,
 					/obj/item/gun/energy/gun/martin = 5,
+					/obj/item/gun/energy/gun = 5,
 					/obj/item/gun/projectile/revolver/havelock = 5,
 					/obj/item/gun/projectile/automatic/atreides = 3,
 					/obj/item/gun/projectile/shotgun/pump = 3,
@@ -1005,10 +1010,9 @@
 					/obj/item/ammo_magazine/slpistol/rubber = 20,
 					/obj/item/ammo_magazine/smg/rubber = 15,
 					/obj/item/ammo_magazine/ammobox/pistol/rubber = 20,
-					/obj/item/ammo_magazine/sllrifle = 10,
-					/obj/item/storage/box/shotgunammo/beanbags = 10,
-					/obj/item/storage/box/shotgunammo/flashshells = 10,
-					/obj/item/storage/box/shotgunammo/blanks = 10,
+					/obj/item/ammo_magazine/ammobox/shotgun/beanbags = 10,
+					/obj/item/ammo_magazine/ammobox/shotgun/flashshells = 10,
+					/obj/item/ammo_magazine/ammobox/shotgun/blanks = 10,
 					/obj/item/clothing/accessory/holster = 5,
 					/obj/item/clothing/accessory/holster/armpit = 5,
 					/obj/item/clothing/accessory/holster/waist = 5,
@@ -1018,8 +1022,8 @@
 					/obj/item/ammo_magazine/hpistol = 5,
 					/obj/item/ammo_magazine/smg = 3,
 					/obj/item/ammo_magazine/ammobox/pistol = 5,
-					/obj/item/storage/box/shotgunammo/slug = 3,
-					/obj/item/storage/box/shotgunammo/buckshot = 3,
+					/obj/item/ammo_magazine/ammobox/shotgun = 3,
+					/obj/item/ammo_magazine/ammobox/shotgun/buckshot = 3,
 					/obj/item/tool/knife/tacknife = 5,
 					/obj/item/storage/box/smokes = 3)
 
@@ -1029,16 +1033,15 @@
 					/obj/item/ammo_magazine/pistol/rubber = 150,
 					/obj/item/ammo_magazine/hpistol = 300,
 					/obj/item/ammo_magazine/hpistol/rubber = 200,
-					/obj/item/storage/box/shotgunammo/beanbags = 300,
-					/obj/item/storage/box/shotgunammo/flashshells = 300,
-					/obj/item/storage/box/shotgunammo/blanks = 50,
-					/obj/item/ammo_magazine/sllrifle = 300,
+					/obj/item/ammo_magazine/ammobox/shotgun/beanbags = 300,
+					/obj/item/ammo_magazine/ammobox/shotgun/flashshells = 300,
+					/obj/item/ammo_magazine/ammobox/shotgun/blanks = 50,
 					/obj/item/ammo_magazine/slpistol = 100,
 					/obj/item/ammo_magazine/smg/rubber = 200,
 					/obj/item/ammo_magazine/smg = 400,
 					/obj/item/ammo_magazine/ammobox/pistol = 500,
-					/obj/item/storage/box/shotgunammo/slug = 600,
-					/obj/item/storage/box/shotgunammo/buckshot = 600,
+					/obj/item/ammo_magazine/ammobox/shotgun = 600,
+					/obj/item/ammo_magazine/ammobox/shotgun/buckshot = 600,
 					/obj/item/tool/knife/tacknife = 300,
 					/obj/item/storage/box/smokes = 200,
 					/obj/item/ammo_magazine/pistol = 300,)
@@ -1247,7 +1250,7 @@
 					/obj/item/ammo_magazine/smg/rubber = 4,
 					/obj/item/ammo_magazine/slmagnum/rubber = 4,
 					/obj/item/ammo_magazine/magnum/rubber = 4,
-					/obj/item/storage/box/shotgunammo/beanbags = 2,
+					/obj/item/ammo_magazine/ammobox/shotgun/beanbags = 2,
 					/obj/item/ammo_magazine/ammobox/pistol/rubber = 4,
 					/obj/item/ammo_magazine/ammobox/magnum/rubber = 4,
 					/obj/item/ammo_magazine/ammobox/clrifle_small/rubber = 4,
@@ -1327,10 +1330,26 @@
 	desc = "A kitchen and restaurant equipment vendor."
 	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
 	icon_state = "dinnerware"
-	products = list(/obj/item/tray = 8,/obj/item/material/kitchen/utensil/fork = 6, /obj/item/tool/knife = 6, /obj/item/material/kitchen/utensil/spoon = 6, /obj/item/tool/knife = 3,/obj/item/reagent_containers/food/drinks/drinkingglass = 8,/obj/item/clothing/suit/chef/classic = 2,/obj/item/storage/lunchbox = 3,/obj/item/storage/lunchbox/rainbow = 3,/obj/item/storage/lunchbox/cat = 3,
-					/obj/item/reagent_containers/food/drinks/pitcher = 3,/obj/item/reagent_containers/food/drinks/teapot = 3,/obj/item/reagent_containers/food/drinks/mug = 3,/obj/item/reagent_containers/food/drinks/mug/black = 3,/obj/item/reagent_containers/food/drinks/mug/green = 3,/obj/item/reagent_containers/food/drinks/mug/blue = 3,
-					/obj/item/reagent_containers/food/drinks/mug/red = 3,/obj/item/reagent_containers/food/drinks/mug/heart = 3,/obj/item/reagent_containers/food/drinks/mug/one = 3,/obj/item/reagent_containers/food/drinks/mug/metal = 3,
-					/obj/item/reagent_containers/food/drinks/mug/rainbow = 3,/obj/item/reagent_containers/food/drinks/mug/brit = 3,/obj/item/reagent_containers/food/drinks/mug/moebius = 3,/obj/item/reagent_containers/food/drinks/mug/teacup = 10,)
+	products = list(
+	/obj/item/tray = 8,
+	/obj/item/material/kitchen/utensil/fork = 6,
+	/obj/item/tool/knife = 6, /obj/item/material/kitchen/utensil/spoon = 6,
+	/obj/item/tool/knife = 3,
+	/obj/item/reagent_containers/food/drinks/drinkingglass = 10,
+	/obj/item/reagent_containers/food/drinks/drinkingglass/shot = 10,
+	/obj/item/reagent_containers/food/drinks/drinkingglass/mug = 10,
+	/obj/item/reagent_containers/food/drinks/drinkingglass/pint = 10,
+	/obj/item/reagent_containers/food/drinks/drinkingglass/wineglass = 10,
+	/obj/item/reagent_containers/food/drinks/drinkingglass/double = 4,
+	/obj/item/clothing/suit/chef/classic = 2,
+	/obj/item/storage/lunchbox = 3,
+	/obj/item/storage/lunchbox/rainbow = 3,
+	/obj/item/storage/lunchbox/cat = 3,
+	/obj/item/reagent_containers/food/drinks/pitcher = 3,
+	/obj/item/reagent_containers/food/drinks/teapot = 3,
+	/obj/item/reagent_containers/food/drinks/mug = 3,
+	/obj/item/reagent_containers/food/drinks/mug/white = 3,
+	/obj/item/reagent_containers/food/drinks/mug/teacup = 10)
 	contraband = list(/obj/item/material/kitchen/rollingpin = 2, /obj/item/tool/knife/butch = 2)
 	auto_price = FALSE
 
@@ -1502,6 +1521,7 @@
 					/obj/item/gun/projectile/kovacs = 2,
 					/obj/item/ammo_magazine/srifle = 6,
 					/obj/item/gun/projectile/boltgun/serbian = 10,
+					/obj/item/ammo_magazine/sllrifle = 20,
 					/obj/item/ammo_magazine/ammobox/lrifle_small = 30,
 					/obj/item/storage/ration_pack = 10,
 					/obj/item/clothing/mask/balaclava = 50
@@ -1515,7 +1535,9 @@
 					/obj/item/storage/deferred/crate/uniform_light = 1800,
 					/obj/item/gun/projectile/kovacs = 3000,
 					/obj/item/ammo_magazine/ammobox/lrifle_small = 400,
-					/obj/item/ammo_magazine/srifle = 200,
+					/obj/item/ammo_magazine/srifle = 300,
+					/obj/item/gun/projectile/boltgun/serbian = 1000,
+					/obj/item/ammo_magazine/sllrifle = 100,
 					/obj/item/storage/ration_pack = 800,
 					/obj/item/clothing/mask/balaclava = 100
 					)
@@ -1526,23 +1548,26 @@
 	name = "Bill Trustworthy's Discount Guns and Enterprising Detritus"
 	desc = "Some relic of an arms dealer's business, its owner most likely long dead."
 	product_slogans = "Discount guns for discount prices!;Also see our used ship line!;From the home of Challenge Pissing!"
-	product_ads = "Brought to you by the man behind Bill Trustworthy's Used Ships!;Don't wait! Don't delay! Don't fuck with us!;No refunds before you die.;Coolness sold seperately."
+	product_ads = "Brought to you by the man behind Bill Trustworthy's Used Ships!;Don't wait! Don't delay! Don't fuck with us!;Lifetime warranty! (it won't last that long.);Coolness sold seperately.;Also see Rent-A-Nuke!"
 	icon_state = "trashvend"
 	products = list(
 					/obj/item/ammo_magazine/lrifle = 12,
 					/obj/item/ammo_magazine/hpistol = 12,
 					/obj/item/ammo_magazine/srifle = 12,
 					/obj/item/ammo_magazine/smg = 12,
-					/obj/item/part/armor = 20,
-					/obj/item/part/gun = 20,
+					/obj/item/part/armor = 30,
+					/obj/item/part/gun = 30,
 					/obj/item/gun/projectile/automatic/ak47/fs = 4,
 					/obj/item/gun/energy/retro = 4,
+					/obj/item/gun/projectile/shotgun/doublebarrel = 4,
 					/obj/item/gun/projectile/mk58  = 2,
 					/obj/item/gun/projectile/mk58/wood = 2,
+					/obj/item/gun/projectile/colt = 4,
 					/obj/item/gun/projectile/revolver/deckard = 2,
 					/obj/item/gun/projectile/automatic/z8 = 4,
 					/obj/item/gun/projectile/automatic/molly = 4,
 					/obj/item/gun/projectile/shotgun/pump/gladstone = 4,
+					/obj/item/gun/projectile/shotgun/pump/regulator = 4,
 					/obj/item/storage/deferred/crate/clown_crime = 2,
 					/obj/item/storage/deferred/crate/clown_crime/wolf = 2,
 					/obj/item/storage/deferred/crate/clown_crime/hoxton = 2,
@@ -1561,14 +1586,17 @@
 					/obj/item/part/armor = 700,
 					/obj/item/part/gun = 700,
 					/obj/item/gun/projectile/automatic/ak47/fs = 3200,
-					/obj/item/gun/energy/retro = 2000,
-					/obj/item/gun/projectile/mk58  = 1500,
-					/obj/item/gun/projectile/mk58/wood = 1500,
+					/obj/item/gun/energy/retro = 1200,
+					/obj/item/gun/projectile/shotgun/doublebarrel = 1400,
+					/obj/item/gun/projectile/mk58  = 900,
+					/obj/item/gun/projectile/mk58/wood = 900,
+					/obj/item/gun/projectile/colt = 1200,
 					/obj/item/gun/projectile/mandella = 1800,
 					/obj/item/gun/projectile/revolver/deckard = 3600,
 					/obj/item/gun/projectile/automatic/z8 = 3500,
-					/obj/item/gun/projectile/automatic/molly = 2000,
+					/obj/item/gun/projectile/automatic/molly = 1700,
 					/obj/item/gun/projectile/shotgun/pump/gladstone = 2200,
+					/obj/item/gun/projectile/shotgun/pump/regulator = 2400,
 					/obj/item/storage/deferred/crate/clown_crime = 1800,
 					/obj/item/storage/deferred/crate/clown_crime/wolf = 1800,
 					/obj/item/storage/deferred/crate/clown_crime/hoxton = 1800,
@@ -1601,7 +1629,7 @@
 		/obj/item/clothing/under/green = 4,
 		/obj/item/clothing/under/grey = 4,
 		/obj/item/clothing/under/black = 4,
-		/obj/item/clothing/under/dress = 4,
+		/obj/item/clothing/under/dress/purple = 4,
 		/obj/item/clothing/under/dress/white = 4,
 		/obj/item/clothing/under/helltaker = 4,
 		/obj/item/clothing/under/johnny = 3,
@@ -1615,30 +1643,30 @@
 		/obj/item/clothing/mask/scarf/style/yellowstyle = 250,
 		/obj/item/clothing/mask/scarf/style/redstyle = 250,
 		/obj/item/clothing/gloves/knuckles = 650,
-		/obj/item/clothing/head/ranger = 550,
+		/obj/item/clothing/head/ranger = 200,
 		/obj/item/clothing/head/inhaler = 750,
 		/obj/item/clothing/head/skull = 450,
 		/obj/item/clothing/head/skull/black = 450,
 		/obj/item/clothing/shoes/redboot = 450,
 		/obj/item/clothing/shoes/jackboots/longboot = 550,
-		/obj/item/clothing/under/white = 600,
-		/obj/item/clothing/under/red = 600,
-		/obj/item/clothing/under/green = 600,
-		/obj/item/clothing/under/grey = 600,
-		/obj/item/clothing/under/black = 600,
-		/obj/item/clothing/under/dress = 600,
-		/obj/item/clothing/under/dress/white = 600,
-		/obj/item/clothing/under/helltaker = 600,
-		/obj/item/clothing/under/johnny = 750,
-		/obj/item/clothing/under/raider = 750,
+		/obj/item/clothing/under/white = 450,
+		/obj/item/clothing/under/red = 450,
+		/obj/item/clothing/under/green = 450,
+		/obj/item/clothing/under/grey = 450,
+		/obj/item/clothing/under/black = 450,
+		/obj/item/clothing/under/dress/purple = 450,
+		/obj/item/clothing/under/dress/white = 450,
+		/obj/item/clothing/under/helltaker = 450,
+		/obj/item/clothing/under/johnny = 600,
+		/obj/item/clothing/under/raider = 600,
 		/obj/item/clothing/suit/storage/triad = 1200,
-		/obj/item/clothing/suit/storage/akira = 750,
+		/obj/item/clothing/suit/storage/akira = 600,
 		/obj/item/clothing/head/skull/drip = 100000
 					)
 
 	contraband = list(
 		/obj/item/clothing/head/skull/drip = 1)	//drip
-	
+
 
 /obj/machinery/vending/custom
 	name = "Custom Vendomat"

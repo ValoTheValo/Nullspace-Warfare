@@ -185,7 +185,10 @@
 		if(reagents && SA.reagents)
 			m_bitesize = min(m_bitesize, reagents.total_volume)
 			//If the creature can't even stomach half a bite, then it eats nothing
-			if (!SA.can_eat() || ((user.reagents.maximum_volume - user.reagents.total_volume) < m_bitesize * 0.5))
+			if (!SA.eat_from_hand)
+				to_chat(user, SPAN_WARNING("[M] doesn't accept hand-feeding."))
+				return 0
+			else if (!SA.can_eat() || ((user.reagents.maximum_volume - user.reagents.total_volume) < m_bitesize * 0.5))
 				amount_eaten = 0
 			else
 				amount_eaten = reagents.trans_to_mob(SA, m_bitesize, CHEM_INGEST)
@@ -264,7 +267,12 @@
 		var/hide_item = !has_edge(W) || !can_slice_here
 
 		if (hide_item)
-			if (W.w_class >= src.w_class || is_robot_module(W))
+			var/illegal_item = FALSE // is used to allow for checks that need type definitions
+			if (ishuman(user))
+				var/mob/living/carbon/human/attached_to = user
+				if (attached_to.is_item_attached(W)) // checks if the item is an implant
+					illegal_item = TRUE
+			if (W.w_class >= src.w_class || is_robot_module(W) || illegal_item)
 				return
 
 			to_chat(user, SPAN_WARNING("You slip \the [W] inside \the [src]."))
@@ -3360,10 +3368,10 @@
 	desc = "A thin piece of raw meat."
 	icon = 'icons/obj/food_ingredients.dmi'
 	icon_state = "rawcutlet"
-	bitesize = 1
+	bitesize = 2
 	center_of_mass = list("x"=17, "y"=20)
-	preloaded_reagents = list("protein" = 1)
-	taste_tag = list(MEAT_FOOD,FLOURY_FOOD)
+	preloaded_reagents = list("protein" = 3)
+	taste_tag = list(MEAT_FOOD)
 
 /obj/item/reagent_containers/food/snacks/cutlet
 	name = "cutlet"
@@ -3372,7 +3380,7 @@
 	icon_state = "cutlet"
 	bitesize = 2
 	center_of_mass = list("x"=17, "y"=20)
-	preloaded_reagents = list("protein" = 2)
+	preloaded_reagents = list("protein" = 3)
 	taste_tag = list(MEAT_FOOD,SPICY_FOOD)
 
 /obj/item/reagent_containers/food/snacks/rawmeatball
@@ -3380,7 +3388,7 @@
 	desc = "A raw meatball."
 	icon = 'icons/obj/food_ingredients.dmi'
 	icon_state = "rawmeatball"
-	bitesize = 2
+	bitesize = 3
 	center_of_mass = list("x"=16, "y"=15)
 	preloaded_reagents = list("protein" = 2)
 	taste_tag = list(MEAT_FOOD)
@@ -3389,13 +3397,13 @@
 	name = "hotdog"
 	desc = "Unrelated to dogs, maybe."
 	icon_state = "hotdog"
-	bitesize = 2
+	bitesize = 3
 	center_of_mass = list("x"=16, "y"=17)
 	preloaded_reagents = list("protein" = 6)
 	junk_food = TRUE
 	spawn_tags = SPAWN_TAG_JUNKFOOD
 	rarity_value = 20
-	taste_tag = list(MEAT_FOOD)
+	taste_tag = list(MEAT_FOOD,FLOURY_FOOD)
 
 /obj/item/reagent_containers/food/snacks/flatbread
 	name = "flatbread"

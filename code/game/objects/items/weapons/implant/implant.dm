@@ -19,6 +19,7 @@
 	var/position_flag = 0
 	var/external = FALSE
 	var/cruciform_resist = FALSE
+	var/scanner_hidden = FALSE	//Does this implant show up on the body scanner
 
 /obj/item/implant/attackby(obj/item/I, mob/user)
 	..()
@@ -29,6 +30,7 @@
 		if(!M.implant && user.unEquip(src, M))
 			M.implant = src
 			M.update_icon()
+		return TRUE
 
 
 /obj/item/implant/proc/trigger(emote, mob/living/source)
