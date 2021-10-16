@@ -510,6 +510,19 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	return target
 
+// Simple proc to recursively get a turf away from a target. More accurate than get edge turf but could be more accurate if using map coordinates or vectors.
+/proc/get_turf_away_from_target_simple(atom/center, atom/target, distance)
+	if(!center || !target)
+		return FALSE
+	var/opposite_dir = turn(get_dir(center,target), 180)
+	var/looping_distance = distance
+	var/atom/current_turf = center
+	while(looping_distance)
+		current_turf = get_step(current_turf,opposite_dir)
+		opposite_dir = turn(get_dir(current_turf, target) , 180) // Get the new opposite relative to our new location
+		looping_distance--
+	return current_turf
+
 // returns turf relative to A in given direction at set range
 // result is bounded to map size
 // note range is non-pythagorean
@@ -1260,3 +1273,20 @@ var/list/FLOORITEMS = list(
 		return 1
 	else
 		return 0
+
+//datum may be null, but it does need to be a typed var
+#define NAMEOF(datum, X) (#X || ##datum.##X)
+
+#define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##target, ##var_name, ##var_value)
+//dupe code because dm can't handle 3 level deep macros
+#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
+
+/proc/___callbackvarset(list_or_datum, var_name, var_value)
+	if(length(list_or_datum))
+		list_or_datum[var_name] = var_value
+		return
+	var/datum/D = list_or_datum
+	// if(IsAdminAdvancedProcCall())
+	// 	D.vv_edit_var(var_name, var_value) //same result generally, unless badmemes
+	// else
+	D.vars[var_name] = var_value

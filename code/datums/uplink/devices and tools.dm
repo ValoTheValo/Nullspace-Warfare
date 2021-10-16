@@ -10,6 +10,11 @@
 	path = /obj/item/storage/toolbox/syndicate
 	desc = "Danger. Very robust. Filled with advanced tools."
 
+/datum/uplink_item/item/tools/gentleman_kit
+	name = "Gentleman's Kit"
+	item_cost = 3
+	path = /obj/item/storage/box/syndie_kit/gentleman_kit
+
 /datum/uplink_item/item/tools/shield_diffuser
 	name = "Shield Diffuser"
 	item_cost = 4
@@ -37,7 +42,7 @@
 	name = "Heavy Armor Vest"
 	item_cost = 6
 	path = /obj/item/clothing/suit/storage/vest/merc
-	
+
 /datum/uplink_item/item/tools/full_heavy_vest
 	name = "Fullbody Heavy Armor Vest"
 	item_cost = 12
@@ -84,7 +89,7 @@
 /datum/uplink_item/item/tools/thermal_lens
 	name = "Thermal Imaging Lenses"
 	item_cost = 12
-	path = /obj/item/clothing/glasses/powered/thermal/lens
+	path = /obj/item/clothing/glasses/attachable_lenses
 
 /datum/uplink_item/item/tools/powersink
 	name = "Powersink (DANGER!)"

@@ -1,5 +1,5 @@
 /obj/item/clothing/head/centhat
-	name = "\improper CentComm. hat"
+	name = "\improper CentCom. hat"
 	icon_state = "centcom"
 	item_state_slots = list(
 		slot_l_hand_str = "centhat",
@@ -265,7 +265,7 @@
 	desc = "A rather generic sergeant hat. On second look it's actually a ranger hat."
 	icon_state = "ranger"
 	item_state = "ranger"
-	price_tag = 400
+	price_tag = 200
 
 /obj/item/clothing/head/inhaler
 	name = "odd looking helmet"
